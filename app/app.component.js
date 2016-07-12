@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router-deprecated', './header/header.component', './home/home.component', './words/words.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,21 +10,39 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, router_deprecated_1, header_component_1, home_component_1, words_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
+            },
+            function (header_component_1_1) {
+                header_component_1 = header_component_1_1;
+            },
+            function (home_component_1_1) {
+                home_component_1 = home_component_1_1;
+            },
+            function (words_component_1_1) {
+                words_component_1 = words_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                 }
                 AppComponent = __decorate([
+                    router_deprecated_1.RouteConfig([
+                        { path: '/', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
+                        { path: '/word/:word', name: 'Word', component: words_component_1.WordsComponent },
+                        { path: '/*others', name: "Others", redirectTo: ['Home'] }
+                    ]),
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>My First Angular 2 App</h1>'
+                        templateUrl: 'app/app.template.html',
+                        directives: [header_component_1.HeaderComponent, router_deprecated_1.ROUTER_DIRECTIVES, home_component_1.HomeComponent, words_component_1.WordsComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

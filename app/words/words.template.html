@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+            <search-bar (search)="onSearch($event)"></search-bar>
+            <div class="card card-block" *ngIf="!exist">
+                <h4 class="card-title">還沒有人定義 {{wordQuery}}</h4>
+                <p class="card-text">您是否要幫大家定義一下 {{wordQuery}} 呢？</p>
+                <button class="btn btn-info">定義{{wordQuery}}</button>    
+            </div>
+            <word-card *ngFor="let word of words" [word]="word.word" [definition]="word.definition" [upvotes]="word.upvotes" [downvotes]="word.downvotes"
+                [tags]="word.tags"></word-card>
+        </div>
+    </div>
+</div>
